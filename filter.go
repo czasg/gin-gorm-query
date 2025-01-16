@@ -1,11 +1,11 @@
-package query
+package webquery
 
 import (
 	"errors"
 	"fmt"
 	"gorm.io/gorm"
-	"strings"
 	"strconv"
+	"strings"
 	"time"
 )
 

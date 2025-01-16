@@ -1,4 +1,4 @@
-module github.com/czasg/gorm-query
+module github.com/czasg/web-query
 
 go 1.22
 
