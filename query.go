@@ -59,11 +59,17 @@ func (q *Query) Parse(c IQuery) error {
 }
 
 func (q *Query) parsePage(c IQuery) {
-	q.Page, _ = strconv.Atoi(c.Query(q.Config.PageParam))
+	// 解析page
+	if page, err := strconv.Atoi(c.Query(q.Config.PageParam)); err == nil {
+		q.Page = page
+	}
 	if q.Page < 1 {
 		q.Page = 1
 	}
-	q.PageSize, _ = strconv.Atoi(c.Query(q.Config.PageSizeParam))
+	// 解析pageSize
+	if pageSize, err := strconv.Atoi(c.Query(q.Config.PageSizeParam)); err == nil {
+		q.PageSize = pageSize
+	}
 	if q.PageSize < 1 {
 		q.PageSize = 1
 	}

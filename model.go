@@ -18,7 +18,7 @@ type Model struct {
 }
 
 func (m *Model) List(query *Query) (rets []interface{}, err error) {
-	err = query.Bind(m.DB).Model(m.Value).Find(rets).Error
+	err = query.Bind(m.DB).Model(m.Value).Find(&rets).Error
 	if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
 		return
 	}
@@ -32,7 +32,7 @@ func (m *Model) ListAndCount(query *Query) (rets []interface{}, count int64, err
 	}
 	db = query.BindPage(db)
 	db = query.BindSort(db)
-	err = db.Find(rets).Error
+	err = db.Find(&rets).Error
 	if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
 		return
 	}
